@@ -1,0 +1,2 @@
+scrapy
+git+https://github.com/vidpesko/ScraperAPI.git@main 
