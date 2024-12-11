@@ -1,3 +1,4 @@
+import sys
 import typing
 import time
 import importlib
@@ -9,7 +10,6 @@ from scrapy.utils.spider import iter_spider_classes
 
 from .settings import ITEM_PIPELINES
 from .middlewares import ScraperAPIMiddleware
-from .spiders import spider
 from . import pipelines
 
 
@@ -30,6 +30,7 @@ def load_pipelines(pipelines_dict: list[dict]) -> list[ModuleType]:
 
 
 def get_spider_from_name(spider_name, spiders_module= "Scraper.spiders") -> typing.Type[scrapy.Spider]:
+    print(sys.path)
     module = importlib.import_module(spiders_module)
 
     for _, module_name, is_pkg in pkgutil.iter_modules(module.__path__):
