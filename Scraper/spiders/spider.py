@@ -33,12 +33,10 @@ class VehicleSpider(scrapy.Spider):
     def start_requests(self):
         # GET request
         for url in self.start_urls:
-            start = time.perf_counter()
             yield scrapy.Request(
                 url,
                 meta={"use_scraperapi": True},
             )
-            print("Request took", time.perf_counter() - start)
 
     def parse(self, response, **kwargs):
         # Initialise and set all attributes on Item object
